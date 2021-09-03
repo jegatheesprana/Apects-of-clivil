@@ -8,7 +8,8 @@ class Sidebar extends Component {
   state = {};
 
   _navs = [
-    { label: 'Correction', path: '/correction' }
+    { label: 'Correction', path: '/correction' },
+    { label: 'Leveling', path: '/leveling' },
   ]
 
   toggleMenuState(menuState) {
@@ -130,7 +131,7 @@ class Sidebar extends Component {
             </li>
           ))}
 
-          <li className={this.isPathActive('/dashboard') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
+          {/* <li className={this.isPathActive('/dashboard') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <Link className="nav-link" to="/dashboard">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
               <span className="menu-title"><Trans>Dashboard</Trans></span>
@@ -262,7 +263,7 @@ class Sidebar extends Component {
               </span>
               <span className="menu-title"><Trans>Documentation</Trans></span>
             </a>
-          </li>
+          </li> */}
         </ul>
       </nav>
     );

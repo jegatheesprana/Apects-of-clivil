@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Spinner from '../app/shared/Spinner';
 
 const Correction = lazy(() => import('./correction/Correction'));
-
+const Leveling = lazy(() => import('./Leveling/Leveling'));
 
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 
@@ -34,6 +34,7 @@ class AppRoutes extends Component {
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/correction" component={Correction} />
+          <Route exact path="/leveling" component={Leveling} />
 
           <Route path="/basic-ui/buttons" component={Buttons} />
           <Route path="/basic-ui/dropdowns" component={Dropdowns} />
@@ -55,7 +56,7 @@ class AppRoutes extends Component {
           <Route path="/error-pages/error-500" component={Error500} />
 
 
-          <Redirect to="/dashboard" />
+          <Redirect to="/correction" />
         </Switch>
       </Suspense>
     );

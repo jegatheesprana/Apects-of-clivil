@@ -155,11 +155,11 @@ const Correction = () => {
                                 <Form.Group key={id}>
                                     <div className="row">
                                         <div className="col-sm-5">
-                                            <label>Measured length of span</label>
+                                            <label>Measured length of span (m)</label>
                                             <Form.Control type="text" name="length" value={item.length} onChange={e => handleBayChange(e, id)} className="form-control-lg" placeholder="Username" aria-label="Username" style={{ backgroundColor: 'unset', color: 'white' }} />
                                         </div>
                                         <div className="col-sm-5">
-                                            <label>Rise between ends</label>
+                                            <label>Rise between ends (m)</label>
                                             <Form.Control type="text" name="rise" value={item.rise} onChange={e => handleBayChange(e, id)} className="form-control-lg" placeholder="Username" aria-label="Username" style={{ backgroundColor: 'unset', color: 'white' }} />
                                         </div>
                                         <div className="col-sm-2">
@@ -203,8 +203,8 @@ const Correction = () => {
                             <div className="col-sm-9">
                                 {bays.map((item, id) => (
                                     <span>= {item.length} + </span>
-                                ))}
-                                <p>= {totalLength}</p>
+                                ))} m
+                                <p>= {totalLength} m</p>
                             </div>
                         </Form.Group>
                         <Form.Group className="row">
@@ -225,8 +225,8 @@ const Correction = () => {
                                             <math> + </math>
                                         </span>
                                     )
-                                })}
-                                <p>= {slopCorr}</p>
+                                })} m
+                                <p>= {slopCorr} m</p>
                             </div>
                         </Form.Group>
                         <Form.Group className="row">
@@ -239,12 +239,12 @@ const Correction = () => {
                                 </p>
                                 <div>
                                     <math>
-                                        = ({data.field_tension} - {data.standard_tension}) X {totalLength} / {consts.area} X {consts.youngmodulus}
+                                        = ({data.field_tension} - {data.standard_tension}) X {totalLength} / {consts.area} X {consts.youngmodulus} m
                                     </math>
                                 </div>
                                 <div>
                                     <math>
-                                        = {tensionCorr}
+                                        = {tensionCorr} m
                                     </math>
                                 </div>
                             </div>
@@ -259,12 +259,12 @@ const Correction = () => {
                                 </p>
                                 <div>
                                     <math>
-                                        = {consts.coefficient_of_thermal} X {totalLength}({data.field_tem}-{data.standard_tem})
+                                        = {consts.coefficient_of_thermal} X {totalLength}({data.field_tem}-{data.standard_tem}) m
                                     </math>
                                 </div>
                                 <div>
                                     <math>
-                                        = {tempCorr}
+                                        = {tempCorr} m
                                     </math>
                                 </div>
                             </div>
@@ -301,6 +301,17 @@ const Correction = () => {
                                     <math>
                                         = ({tapeWeight}<sup>2</sup> X {totalLength}<sup>3</sup>) / 24 X {data.field_tension}<sup>2</sup>
                                     </math>
+                                    {bays.map((item, id) => {
+                                        if (!item.length) return (<></>)
+                                        return (
+                                            <span key={id}>
+                                                <math>
+                                                    {tapeWeight}<sup>2</sup> X {item.length}<sup>3</sup>) / 24 X {data.field_tension}<sup>2</sup>
+                                                </math>
+                                                <math> + </math>
+                                            </span>
+                                        )
+                                    })}
                                 </div>
                                 <div>
                                     <math>
