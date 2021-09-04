@@ -9,8 +9,8 @@ const Correction = () => {
     const [round, setRound] = useState(4)
     const [consts, setConsts] = useState({ coefficient_of_thermal: 0.000013, youngmodulus: 209000, density: 6900, area: 5, radius_of_the_earth: 6367, g: 9.81 })
     const [data, setData] = useState({ field_tension: 75, standard_tension: 90, field_tem: 28, standard_tem: 22.5, above_sea_level: 33.7 })
-    // const [bays, setBays] = useState([{ ...defaultBay }])
-    const [bays, setBays] = useState([{ length: 25.888, rise: 0.214 }, { length: 29.741, rise: 0.285 }, { length: 26.662, rise: 0.119 }])
+    const [bays, setBays] = useState([{ ...defaultBay }])
+    // const [bays, setBays] = useState([{ length: 25.888, rise: 0.214 }, { length: 29.741, rise: 0.285 }, { length: 26.662, rise: 0.119 }])
     const [totalLength, setTotalLength] = useState(0)
     const [tapeWeight, setTapeWeight] = useState(0)
 
